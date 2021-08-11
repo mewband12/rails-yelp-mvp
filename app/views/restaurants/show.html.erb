@@ -1,0 +1,35 @@
+<html>
+<nav class="navbar navbar-light bg-light">
+  <%= link_to "Home",  restaurants_path, class: "navbar-brand"%>
+  <%= link_to "create tasks",  new_restaurant_path , class:"mr-sm-2 navbar-brand"%>
+</nav>
+<div class = "d-flex flex-column justify-content-center ">
+  <div class = "containerr p-2" style= "box-shadow: 0 1px 1px -1px gray">
+    <h1><%= @restaurant.name %>
+      <%= link_to "🗑", restaurant_path, method: :delete, data: { confirm: "Really delete #{@restaurant.name}?" } %>
+      <%= link_to "edit", edit_restaurant_path  %>
+    </h1>
+  </div>
+  <div class ="p-2">
+    <p><%= @restaurant.address %></p>
+  </div>
+  <div class ="p-2">
+    <%= link_to "Write a review", new_restaurant_review_path(@restaurant) %>
+  </div>
+  <div class ="p-2">
+    <% if @restaurant.reviews.any? %>
+    <p>
+    <strong>Reviews:</strong>
+    <ul>
+    <% @restaurant.reviews.each do |review| %>
+      <li><%= review.content %> </li>
+    <% end %>
+    </ul>
+    </p>
+    <% else %>
+    <p> Be the first to review...</p>
+    <% end %>
+  </div>
+</div>
+</html>
+

@@ -1,0 +1,24 @@
+<html>
+<!-- Image and text -->
+<nav class="navbar navbar-light bg-light">
+  <%= link_to "Home",  restaurants_path, class: "navbar-brand"%>
+  <%= link_to "create tasks",  new_restaurant_path , class:"mr-sm-2 navbar-brand"%>
+</nav>
+<div class = "d-block ml-100 d-flex justify-content-center">
+    <div class ="col-sm-8 col-sm-offset-2" style="">
+        <h1>My Tasks</h1>
+          <% @restaurants.each do |restaurant| %>
+          <div class = "card">
+            <h5 class="card-header navbar-brand"><%= link_to restaurant.name,  restaurant_path(restaurant.id) %></h5>
+            <div class ="card-body">
+              <%= restaurant.address %>
+            </div>  
+          </div>  
+              <% end %>        
+        <p><%= link_to "create tasks",  new_restaurant_path %></p>
+    </div>
+</div>
+
+
+
+</html>

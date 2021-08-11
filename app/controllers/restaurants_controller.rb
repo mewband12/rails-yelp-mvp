@@ -19,6 +19,10 @@ class RestaurantsController < ApplicationController
       render 'restaurants/new'
     end
   end
+  
+  def edit
+    @restaurant = Restaurant.find(params[:id])
+  end
 
   private
 
